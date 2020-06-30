@@ -2,8 +2,8 @@ from django.db import models
 
 # Create your models here.
 
-class Destination:
-    id : int
+class Destination(models.Model):
+
     name : str
     img : str
     desc : str
