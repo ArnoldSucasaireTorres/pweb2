@@ -3,6 +3,12 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 
 # Create your views here.
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+    else:
+        return render(request, 'register.html')
 
 def register(request):
     if request.method == 'POST':
@@ -25,7 +31,7 @@ def register(request):
                 user.save()
                 print('user created')
         else:
-            print('LA CONTRASEÑA NO COINCIDE')
+            messages.info(request, 'La contraseña no coincide')
             return redirect('register')
         return redirect('/')
     else:
